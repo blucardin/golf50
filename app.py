@@ -75,9 +75,9 @@ class Problems(Base):
     slug = Column(Text, nullable=False)
 
 
-# create a new class named submissions
+# create a new class named submissionsbin
 class Submissions(Base):
-    __tablename__ = 'submissions'
+    __tablename__ = 'submissionsbin'
     id = Column(Integer, primary_key=True)
     problem_id = Column(Integer, ForeignKey("problems.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
@@ -204,7 +204,7 @@ def problem():
     if problem is None:
         return 'Problem not found, please try again'  # TODO replace with a 404 page, with redirect to problems page
 
-    # get the first 10 least size submissions for this problem where pass = true
+    # get the first 10 least size submissionsbin for this problem where pass = true
     submissions = Submissions.query.filter_by(problem_id=problem.id, check='pass').order_by(Submissions.size).limit(10).all()
 
     return render_template('problem.html', problem=problem, submissions=submissions)
@@ -233,10 +233,10 @@ def submit():
 @app.route('/submissions')
 @login_required
 def submissions():
-    # get the last 20 submissions by the time they were submitted, join the problems table and get the name of the problem, join users table and get the of the user and their github link and there avatar link
+    # get the last 20 submissionsbin by the time they were submitted, join the problems table and get the name of the problem, join users table and get the of the user and their github link and there avatar link
     submissions = Submissions.query.order_by(Submissions.id.desc()).join(Problems, Problems.id == Submissions.problem_id).add_columns(Problems.name).join(User, User.id == Submissions.user_id).add_columns(User.github_login, User.github_link, User.github_avatar).limit(20).all()
     print(submissions)
-    # get all the submissions that the user has submitted, join the problems table and get the name of the problem
+    # get all the submissionsbin that the user has submitted, join the problems table and get the name of the problem
     user_submissions = Submissions.query.filter_by(user_id=session['user_id']).join(Problems, Problems.id == Submissions.problem_id).add_columns(Problems.name).all()
 
     return render_template('submissions.html', submissions=submissions, user_submissions=user_submissions, convert=time.ctime)
