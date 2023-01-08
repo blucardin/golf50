@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    {% if g.user %}
+        <h1>Hi {{g.user.github_login }}!</h1>
+        <a href="{{ url_for("repo") }}">Get repo</a>
+        <a href="{{ url_for("logout") }}">Logout</a>
+    {% else %}
+        <h1>Hi there!</h1>
+    {% endif %}
+    <h1>Welcome to Golf50!</h1>
+    <h2>What is Golf50?</h2>
+    <p>Golf50 is a platform for playing code golf on problem sets from the CS50 course</p>
+
+{% endblock %}

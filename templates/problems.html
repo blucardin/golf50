@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Problems
+{% endblock %}
+
+{% block main %}
+    <h1>Problems</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Problem</th>
+{#                <th>Difficulty</th>#}
+{#                <th>Category</th>#}
+{#                <th>Points</th>#}
+            </tr>
+        </thead>
+        <tbody>
+            {% for problem in problems %}
+                <tr>
+                    <td><a href="{{ url_for('problem', problem_id=problem.id) }}">{{ problem.name }}</a></td>
+{#                    <td>{{ problem.difficulty }}</td>#}
+{#                    <td>{{ problem.category }}</td>#}
+{#                    <td>{{ problem.points }}</td>#}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

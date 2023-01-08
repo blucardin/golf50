@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Submit {{ problem.name }}
+{% endblock %}
+{% block main %}
+{#Create a new submission form, accsept multiple files via drag and drop, and a comment, and a submit button#}
+    <h1>Submit {{ problem.name }}</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="problem_id" value="{{ problem.id }}"/>
+        <input type="file" name="files" id="files" multiple required/>
+        <label for="comment">
+            Comment:
+            <input type="text" name="comment" id="comment" />
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

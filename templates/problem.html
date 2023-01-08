@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Problem {{ problem.name }}
+{% endblock %}
+
+{% block main %}
+    <h1>{{ problem.name }}</h1>
+    <a href="{{ problem.url }}">Learn More</a>
+    <br>
+    <code>check50 {{ problem.slug }}</code>
+    <br>
+    <a href="{{ url_for('submit', problem_id=problem.id) }}">Submit</a>
+
+    <h2>Leaderboard</h2>
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Problem Name</th>
+                <th>User</th>
+                <th>Check</th>
+                <th>Size</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+     </table>
+{#            {% for submission in submissions %}#}
+{% endblock %}

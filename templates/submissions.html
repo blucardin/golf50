@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Submissions
+{% endblock %}
+
+{% block main %}
+{#    Display all the submissions in submissions in a table, if the user click a check box, display all the submissions in user_submissions#}
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
+{#    TODO use the slider to switch to the user submissions#}
+{#     TODO display the proper submissions #}
+
+    <h1>Note to self: Check what submissions out in the console</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Problem Name</th>
+                <th>User</th>
+                <th>Check</th>
+                <th>Size</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+{#            {% for submission in submissions %}#}
+{#                <tr>#}
+{#                    <td>{{ submission.id }}</td>#}
+{#                    <td>{{ submission.date }}</td>#}
+{#                    <td>{{ submission.time }}</td>#}
+{#                    <td>{{ submission.status }}</td>#}
+{#                    <td>{{ submission.grade }}</td>#}
+{#                    <td>{{ conver(submission.time) }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+        </tbody>
+    </table>
+{% endblock %}
